@@ -1,10 +1,9 @@
-import { SplitText } from "gsap-trial/SplitText";
+import { FreeSplitText as SplitText } from "./freeSplitText";
 import gsap from "gsap";
-import { smoother } from "../Navbar";
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
-  smoother.paused(false);
+  // lenis is handled in Navbar
   document.getElementsByTagName("main")[0].classList.add("main-active");
   gsap.to("body", {
     backgroundColor: "#0b080c",
