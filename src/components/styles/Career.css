@@ -11,6 +11,27 @@
   margin-bottom: 250px;
   padding: 120px 0px;
 }
+/* Class toggled via JS on hover over career section */
+.character-model-hidden {
+  opacity: 0 !important;
+  transition: opacity 0.8s ease !important;
+}
+.character-model {
+  transition: opacity 0.8s ease;
+}
+.career-bg-text {
+  position: absolute;
+  font-size: 15vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  pointer-events: none;
+  margin: 0;
+  letter-spacing: 20px;
+}
 
 .career-section h2 {
   font-size: 70px;

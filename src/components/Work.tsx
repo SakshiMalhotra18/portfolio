@@ -46,6 +46,45 @@ const Work = () => {
     ScrollTrigger.getById("work")?.kill();
   };
 }, []);
+  const projects = [
+    { 
+      title: "Enterprise Data Warehouse", 
+      category: "Data Engineering", 
+      tools: "Azure Synapse, Databricks, PySpark, ADF",
+      highlight: "Processed petabyte-scale data for global planning."
+    },
+    { 
+      title: "Real-time Analytics Engine", 
+      category: "Big Data", 
+      tools: "Kafka, Spark Streaming, Azure SQL",
+      highlight: "Reduced data latency by 35% across global pipelines."
+    },
+    { 
+      title: "Predictive Demand Model", 
+      category: "Machine Learning", 
+      tools: "Python, Scikit-learn, MLflow, Databricks",
+      highlight: "Improved allocation accuracy by 21% using Seq2Seq."
+    },
+    { 
+      title: "Financial Reporting Suite", 
+      category: "Data Visualization", 
+      tools: "Power BI, DAX, SQL Server",
+      highlight: "Automated 100+ weekly reports, saving 6 hrs/week."
+    },
+    { 
+      title: "Automated ETL Pipeline", 
+      category: "Automation", 
+      tools: "Python, Airflow, Docker, Kubernetes",
+      highlight: "99.9% pipeline uptime with automated failure recovery."
+    },
+    { 
+      title: "Customer Sentiment Engine", 
+      category: "NLP / AI", 
+      tools: "TensorFlow, NLTK, Cloud Functions",
+      highlight: "Analyzed 10k+ daily feedback logs with 92% precision."
+    },
+  ];
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -53,21 +92,22 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
+          {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
 
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.title}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
                 <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <p>{project.tools}</p>
+                <p className="work-highlight">{project.highlight}</p>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage image="/images/placeholder.webp" alt={project.title} />
             </div>
           ))}
         </div>

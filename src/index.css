@@ -94,10 +94,27 @@ body {
 .techstack {
   width: 100%;
   position: relative;
-  height: var(--vh);
+  height: 100vh;
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: -100px;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: var(--backgroundColor);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tech-canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
 }
 
 .techstack h2 {
@@ -105,10 +122,12 @@ body {
   text-align: center;
   position: absolute;
   width: 100%;
-  top: 120px;
+  top: 80px;
   left: 0;
   font-weight: 400;
   text-transform: uppercase;
+  z-index: 2;
+  pointer-events: none;
 }
 
 @media screen and (min-width: 768px) {

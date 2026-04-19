@@ -129,6 +129,7 @@ const Scene = () => {
       return () => {
         clearTimeout(debounce);
         scene.clear();
+        renderer.forceContextLoss();
         renderer.dispose();
         window.removeEventListener("resize", () =>
           handleResize(renderer, camera, canvasDiv, character!)

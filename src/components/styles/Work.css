@@ -11,6 +11,9 @@
   height: 100vh;
   box-sizing: border-box;
   will-change: transform;
+  background-color: var(--backgroundColor);
+  position: relative;
+  z-index: 9;
 }
 .work-container {
   margin: auto;
@@ -84,6 +87,13 @@
 }
 .work-info > p {
   width: 90%;
+}
+.work-highlight {
+  color: var(--accentColor) !important;
+  font-style: italic;
+  margin-top: 15px !important;
+  font-weight: 400 !important;
+  opacity: 1 !important;
 }
 .work-image {
   display: flex;
