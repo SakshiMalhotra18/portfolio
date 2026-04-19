@@ -21,40 +21,48 @@ export class FreeSplitText {
 
   private split(options: { type: string, linesClass?: string }) {
     this.elements.forEach(el => {
-      const text = el.innerText;
+      // If the element has children (like our name spans), we process them individually
+      // to preserve the line breaks/containers.
+      const children = Array.from(el.childNodes);
       el.innerHTML = "";
       
-      if (options.type.includes("words") || options.type.includes("chars")) {
-        const wordsArr = text.split(" ");
-        wordsArr.forEach((word, wordIndex) => {
-          const wordSpan = document.createElement("span");
-          wordSpan.style.display = "inline-block";
-          wordSpan.className = "split-word";
-          
-          if (options.type.includes("chars")) {
-            word.split("").forEach(char => {
-              const charSpan = document.createElement("span");
-              charSpan.innerText = char;
-              charSpan.style.display = "inline-block";
-              charSpan.className = "split-char";
-              wordSpan.appendChild(charSpan);
-              this.chars.push(charSpan);
-            });
-          } else {
-            wordSpan.innerText = word;
-          }
+      children.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE || (node instanceof HTMLElement)) {
+          const text = node.textContent || "";
+          if (!text.trim() && node.nodeType === Node.TEXT_NODE) return;
 
-          el.appendChild(wordSpan);
-          this.words.push(wordSpan);
+          const container = (node instanceof HTMLElement) ? node.cloneNode(false) as HTMLElement : document.createElement("span");
+          container.innerHTML = "";
+          el.appendChild(container);
 
-          if (wordIndex < wordsArr.length - 1) {
-            const space = document.createTextNode(" ");
-            el.appendChild(space);
-          }
-        });
-      } else {
-        el.innerText = text;
-      }
+          const wordsArr = text.split(/(\s+)/); // Preserve spaces
+          wordsArr.forEach((word) => {
+            if (word.trim() === "") {
+              container.appendChild(document.createTextNode(word));
+              return;
+            }
+
+            const wordSpan = document.createElement("span");
+            wordSpan.style.display = "inline-block";
+            wordSpan.className = "split-word";
+            container.appendChild(wordSpan);
+            this.words.push(wordSpan);
+
+            if (options.type.includes("chars")) {
+              word.split("").forEach(char => {
+                const charSpan = document.createElement("span");
+                charSpan.innerText = char;
+                charSpan.style.display = "inline-block";
+                charSpan.className = "split-char";
+                wordSpan.appendChild(charSpan);
+                this.chars.push(charSpan);
+              });
+            } else {
+              wordSpan.innerText = word;
+            }
+          });
+        }
+      });
     });
   }
 

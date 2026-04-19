@@ -181,6 +181,10 @@
   text-transform: uppercase;
   color: #ffffff !important;
   text-shadow: 2px 2px 20px rgba(0, 0, 0, 1), -2px -2px 20px rgba(0, 0, 0, 1);
+  overflow: visible;
+}
+.name-line:last-child {
+  font-weight: 300;
 }
 
 /* .landing-intro h1 span {
