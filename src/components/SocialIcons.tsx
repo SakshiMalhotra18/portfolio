@@ -1,5 +1,6 @@
 import {
   FaLinkedinIn,
+  FaGithub,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
@@ -56,6 +57,11 @@ const SocialIcons = () => {
   return (
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
+        <span>
+          <a href="https://github.com/SakshiMalhotra18" target="_blank" rel="noreferrer">
+            <FaGithub />
+          </a>
+        </span>
         <span>
           <a href="https://www.linkedin.com/in/sakshi-malhotra18/" target="_blank">
             <FaLinkedinIn />

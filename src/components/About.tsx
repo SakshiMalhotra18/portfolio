@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Data Scientist and Lead Engineer with 4+ years of expertise in building ML forecasting systems and cloud-scale data pipelines. Proven track record in improving power allocation accuracy by 20% and reducing manual reporting overhead by 60% through automated CI/CD and Azure workflows. Skilled in Azure Synapse, Databricks, Python, and machine learning at scale; known for technical leadership and mentoring cross-functional teams to drive high-impact data initiatives.
+          AI Engineer and Data Scientist with 4+ years of expertise building production-ready LLM agents, ML forecasting systems, and cloud-scale data pipelines. Proven track record in improving system accuracy by 20% and reducing manual overhead by 60% through intelligent automation and robust architectures. Skilled in Python, modern AI orchestration, and scalable data systems; known for technical leadership and driving high-impact, end-to-end solutions.
         </p>
       </div>
     </div>

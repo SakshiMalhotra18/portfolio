@@ -1,88 +1,60 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP);
-
 const Work = () => {
-  useGSAP(() => {
-  let translateX: number = 0;
-
-  function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    let padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-  }
-
-  setTranslateX();
-
-  let timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-section",
-      start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
-      scrub: true,
-      pin: true,
-      id: "work",
-    },
-  });
-
-  timeline.to(".work-flex", {
-    x: -translateX,
-    ease: "none",
-  });
-
-  // Clean up (optional, good practice)
-  return () => {
-    timeline.kill();
-    ScrollTrigger.getById("work")?.kill();
-  };
-}, []);
   const projects = [
     { 
-      title: "Enterprise Data Warehouse", 
-      category: "Data Engineering", 
-      tools: "Azure Synapse, Databricks, PySpark, ADF",
-      highlight: "Processed petabyte-scale data for global planning."
+      title: "RevAgent — Revenue Intelligence Agent", 
+      category: "AI Agent · Full-Stack", 
+      tools: "Python · pandas · FastAPI · Next.js 14 · TypeScript · Tailwind · Recharts · Groq LLM · DuckDB",
+      highlight: "Automates \"why did our numbers move?\" — detects anomalies across 500K+ rows of ecommerce data and generates LLM-powered root cause reports with confidence scores",
+      status: "🚧 Under Construction",
+      github: "https://github.com/SakshiMalhotra18",
+      initials: "RA"
     },
     { 
-      title: "Real-time Analytics Engine", 
-      category: "Big Data", 
-      tools: "Kafka, Spark Streaming, Azure SQL",
-      highlight: "Reduced data latency by 35% across global pipelines."
+      title: "AI Voice Receptionist — Clove Dental", 
+      category: "Voice AI · Conversational Agent", 
+      tools: "Vapi (Riley) · LLM · Prompt Engineering · Voice + Chat",
+      highlight: "Production-ready dental booking agent — handles phone normalization (\"double 4\" → 44), date parsing (\"tomorrow 8 AM\" → absolute datetime), strict validation, and converts every call into structured backend-ready JSON",
+      status: "🎙️ Voice AI",
+      live: "https://youtu.be/QprvdWT5qEE",
+      video: "demo.mp4",
+      github: "https://github.com/SakshiMalhotra18/clove-dental-voice-agent",
+      initials: "CD"
     },
     { 
-      title: "Predictive Demand Model", 
-      category: "Machine Learning", 
-      tools: "Python, Scikit-learn, MLflow, Databricks",
-      highlight: "Improved allocation accuracy by 21% using Seq2Seq."
+      title: "Vishwajna Puratan GPT", 
+      category: "Generative AI · Custom GPT", 
+      tools: "OpenAI GPT Builder · Prompt Engineering",
+      highlight: "Custom GPT delivering answers from Hindu mythology, Vedas, Puranas, Ramayana, and Mahabharata in a humble, spiritual tone",
+      live: "https://chatgpt.com/g/g-6795d4491a5881919d37758d5cf1c18c-vishwajna-puratan",
+      github: "https://github.com/SakshiMalhotra18/Vishwajna-puratan-gpt",
+      initials: "VP"
     },
     { 
-      title: "Financial Reporting Suite", 
-      category: "Data Visualization", 
-      tools: "Power BI, DAX, SQL Server",
-      highlight: "Automated 100+ weekly reports, saving 6 hrs/week."
+      title: "COVID-19 Insights Lab", 
+      category: "Data Science · Machine Learning", 
+      tools: "Python · Pandas · Scikit-learn · Statsmodels · Prophet · Streamlit · Matplotlib · Seaborn",
+      highlight: "6-project data science lab covering EDA, regression, classification, time series forecasting (ARIMA/Prophet), KMeans clustering, and an interactive Streamlit dashboard — all on real COVID-19 global data",
+      github: "https://github.com/SakshiMalhotra18/Covid19-insights",
+      initials: "C19"
     },
     { 
-      title: "Automated ETL Pipeline", 
-      category: "Automation", 
-      tools: "Python, Airflow, Docker, Kubernetes",
-      highlight: "99.9% pipeline uptime with automated failure recovery."
+      title: "Smile Detection", 
+      category: "Computer Vision", 
+      tools: "Python · OpenCV",
+      highlight: "Real-time facial smile detection using computer vision",
+      github: "https://github.com/SakshiMalhotra18/Smile-Detection",
+      initials: "SD"
     },
     { 
-      title: "Customer Sentiment Engine", 
-      category: "NLP / AI", 
-      tools: "TensorFlow, NLTK, Cloud Functions",
-      highlight: "Analyzed 10k+ daily feedback logs with 92% precision."
-    },
+      title: "Graph Classifier", 
+      category: "Machine Learning · Graph ML", 
+      tools: "Python · Jupyter Notebook",
+      highlight: "Graph-based classification model",
+      github: "https://github.com/SakshiMalhotra18/GraphClassifier",
+      initials: "GC"
+    }
   ];
 
   return (
@@ -97,17 +69,27 @@ const Work = () => {
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
-
                   <div>
                     <h4>{project.title}</h4>
                     <p>{project.category}</p>
                   </div>
                 </div>
-                <h4>Tools and features</h4>
-                <p>{project.tools}</p>
-                <p className="work-highlight">{project.highlight}</p>
+                <div className="work-impact-container">
+                  <p className="work-highlight">{project.highlight}</p>
+                </div>
+                <div className="work-tech-section">
+                  <div className="work-tech-tags">
+                    {project.tools.split(/ · |, | - /).map(tool => (
+                      <span className="tech-tag" key={tool}>{tool.trim()}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="work-links">
+                  {project.github && <a href={project.github} target="_blank" rel="noreferrer" className="btn-link">GitHub ↗</a>}
+                  {project.live && <a href={project.live} target="_blank" rel="noreferrer" className="btn-link">Live ↗</a>}
+                </div>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt={project.title} />
+              <WorkImage initials={project.initials} alt={project.title} status={project.status} video={project.video} />
             </div>
           ))}
         </div>

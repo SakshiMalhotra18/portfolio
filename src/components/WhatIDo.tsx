@@ -27,16 +27,20 @@ const WhatIDo = () => {
   return (
     <div className="whatIDO">
       <div className="what-box">
-        <h2 className="title">
-          W<span className="hat-h2">HAT</span>
-          <div>
+        <div className="title-wrapper">
+          <h2 className="title">
+            W<span className="hat-h2">HAT</span><br/>
             I<span className="do-h2"> DO</span>
-          </div>
+          </h2>
           <p className="what-desc">
             Transforming complex data into actionable insights through robust
             engineering and advanced analytics.
+            <br /><br />
+            I build intelligent AI agents, custom LLM solutions, and scalable full-stack applications that solve real-world problems.
+            <br /><br />
+            My goal is to bridge the gap between raw data and seamless, user-centric automated systems.
           </p>
-        </h2>
+        </div>
       </div>
       <div className="what-box">
         <div className="what-box-in">
@@ -90,6 +94,52 @@ const WhatIDo = () => {
                 <div className="what-tags">NLP</div>
                 <div className="what-tags">Python</div>
                 <div className="what-tags">R</div>
+              </div>
+              <div className="what-arrow"></div>
+            </div>
+          </div>
+          <div
+            className="what-content what-noTouch"
+            ref={(el) => setRef(el, 2)}
+          >
+            <div className="what-content-in">
+              <h3>AI & GEN AI</h3>
+              <h4>Description</h4>
+              <p>
+                Build autonomous LLM-powered agents, custom GPTs, and intelligent voice assistants to automate workflows and data extraction.
+              </p>
+              <h5>Skillset & tools</h5>
+              <div className="what-content-flex">
+                <div className="what-tags">LLMs</div>
+                <div className="what-tags">OpenAI</div>
+                <div className="what-tags">Groq</div>
+                <div className="what-tags">Prompt Engineering</div>
+                <div className="what-tags">Voice AI</div>
+                <div className="what-tags">LangChain</div>
+                <div className="what-tags">Vector Databases</div>
+              </div>
+              <div className="what-arrow"></div>
+            </div>
+          </div>
+          <div
+            className="what-content what-noTouch"
+            ref={(el) => setRef(el, 3)}
+          >
+            <div className="what-content-in">
+              <h3>FULL-STACK DEV</h3>
+              <h4>Description</h4>
+              <p>
+                Create scalable web applications and interactive dashboards with modern frontend frameworks and efficient backend APIs.
+              </p>
+              <h5>Skillset & tools</h5>
+              <div className="what-content-flex">
+                <div className="what-tags">Next.js</div>
+                <div className="what-tags">React</div>
+                <div className="what-tags">TypeScript</div>
+                <div className="what-tags">Tailwind CSS</div>
+                <div className="what-tags">FastAPI</div>
+                <div className="what-tags">DuckDB</div>
+                <div className="what-tags">Streamlit</div>
               </div>
               <div className="what-arrow"></div>
             </div>
