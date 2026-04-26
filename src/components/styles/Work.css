@@ -119,6 +119,8 @@
 .work-image-in {
   position: relative;
   width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .work-links {
   display: flex;
@@ -159,19 +161,16 @@
 }
 .work-status-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 15px;
+  right: 15px;
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--accentColor);
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 14px;
   z-index: 10;
 }
 .work-link {
@@ -207,8 +206,15 @@
   object-fit: cover;
 }
 .work-image img {
+  width: 100%;
   max-width: 100%;
   max-height: 350px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.work-image-in:hover img {
+  transform: scale(1.08);
 }
 @media only screen and (max-height: 900px) {
   .work-image img {

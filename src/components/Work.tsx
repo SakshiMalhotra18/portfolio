@@ -1,7 +1,20 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
+interface Project {
+  title: string;
+  category: string;
+  tools: string;
+  highlight: string;
+  status?: string;
+  live?: string;
+  video?: string;
+  github?: string;
+  initials?: string;
+  image?: string;
+}
+
 const Work = () => {
-  const projects = [
+  const projects: Project[] = [
     { 
       title: "RevAgent — Revenue Intelligence Agent", 
       category: "AI Agent · Full-Stack", 
@@ -9,7 +22,7 @@ const Work = () => {
       highlight: "Automates \"why did our numbers move?\" — detects anomalies across 500K+ rows of ecommerce data and generates LLM-powered root cause reports with confidence scores",
       status: "🚧 Under Construction",
       github: "https://github.com/SakshiMalhotra18",
-      initials: "RA"
+      image: "/images/01-revagent.png"
     },
     { 
       title: "AI Voice Receptionist — Clove Dental", 
@@ -20,7 +33,7 @@ const Work = () => {
       live: "https://youtu.be/QprvdWT5qEE",
       video: "demo.mp4",
       github: "https://github.com/SakshiMalhotra18/clove-dental-voice-agent",
-      initials: "CD"
+      image: "/images/02-riley-voice-agent.png"
     },
     { 
       title: "Vishwajna Puratan GPT", 
@@ -29,7 +42,7 @@ const Work = () => {
       highlight: "Custom GPT delivering answers from Hindu mythology, Vedas, Puranas, Ramayana, and Mahabharata in a humble, spiritual tone",
       live: "https://chatgpt.com/g/g-6795d4491a5881919d37758d5cf1c18c-vishwajna-puratan",
       github: "https://github.com/SakshiMalhotra18/Vishwajna-puratan-gpt",
-      initials: "VP"
+      image: "/images/03-vishwajna-gpt.png"
     },
     { 
       title: "COVID-19 Insights Lab", 
@@ -37,15 +50,7 @@ const Work = () => {
       tools: "Python · Pandas · Scikit-learn · Statsmodels · Prophet · Streamlit · Matplotlib · Seaborn",
       highlight: "6-project data science lab covering EDA, regression, classification, time series forecasting (ARIMA/Prophet), KMeans clustering, and an interactive Streamlit dashboard — all on real COVID-19 global data",
       github: "https://github.com/SakshiMalhotra18/Covid19-insights",
-      initials: "C19"
-    },
-    { 
-      title: "Smile Detection", 
-      category: "Computer Vision", 
-      tools: "Python · OpenCV",
-      highlight: "Real-time facial smile detection using computer vision",
-      github: "https://github.com/SakshiMalhotra18/Smile-Detection",
-      initials: "SD"
+      image: "/images/04-covid19-insights.png"
     },
     { 
       title: "Graph Classifier", 
@@ -53,7 +58,15 @@ const Work = () => {
       tools: "Python · Jupyter Notebook",
       highlight: "Graph-based classification model",
       github: "https://github.com/SakshiMalhotra18/GraphClassifier",
-      initials: "GC"
+      image: "/images/05-graph-classifier.png"
+    },
+    { 
+      title: "Smile Detection", 
+      category: "Computer Vision", 
+      tools: "Python · OpenCV",
+      highlight: "Real-time facial smile detection using computer vision",
+      github: "https://github.com/SakshiMalhotra18/Smile-Detection",
+      image: "/images/06-smile-detection.png"
     }
   ];
 
@@ -89,7 +102,7 @@ const Work = () => {
                   {project.live && <a href={project.live} target="_blank" rel="noreferrer" className="btn-link">Live ↗</a>}
                 </div>
               </div>
-              <WorkImage initials={project.initials} alt={project.title} status={project.status} video={project.video} />
+              <WorkImage initials={project.initials} image={project.image} alt={project.title} status={project.status} video={project.video} />
             </div>
           ))}
         </div>
